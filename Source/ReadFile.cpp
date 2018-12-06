@@ -11,15 +11,23 @@ bool readFile::readFileFunction(){
   string line, word;
   BookClass *pre, *head_tmp = head;
   while (getline(bookFile,line)) {
-    stringstream s(line);
-    s >> word;
+
+    size_t pos = line.find("-");
+    string word = line.substr(0, pos);
     head->setPubYear(atoi(word.c_str()));
-    s >> word;
+
+    size_t pos2 = line.find("-", pos+1);
+    word = line.substr(pos+1, pos2 - pos - 1);
     head->setBookName(word);
-    s >> word;
+
+    pos = line.find("-", (pos2)+1);
+    word = line.substr(pos2+1, pos - pos2 - 1);
     head->setWriter(word);
-    s >> word;
+
+    pos2 = line.find("-", pos+1);
+    word = line.substr(pos+1, pos2 - pos - 1);
     head->setPrice(atoi(word.c_str()));
+
     pre = head;
     BookClass *tmp = new BookClass;
     head->setNextPtr(tmp);

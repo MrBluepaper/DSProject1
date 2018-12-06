@@ -1,10 +1,10 @@
-1957 AtlasShrugged AynRand 10
-1943 TheFountainhead AynRand 15
-1982 BattlefieldEarth L.RonHubbard 25
-1954 TheLordOfTheRings J.R.R.Tolkien 14
-1960 ToKillAMockingbird HarperLee 12
-1949 NineteenEightyFour GeorgeOrwell 10
-1938 Anthem AynRand 24
-1936 WeTheLiving AynRand 13
-1985 MissionEarth L.RonHubbard 11
-1940 Fear L.RonHubbard 16
+1957-Atlas Shrugged-Ayn Rand-10-
+1943-The Fountainhead-Ayn Rand-15-
+1982-Battlefield Earth-L. Ron Hubbard-25-
+1954-The Lord Of The Rings-J. R. R. Tolkien-14-
+1960-To Kill A Mockingbird-HarperLee-12-
+1949-Nineteen Eighty Four-George Orwell-10-
+1938-Anthem-Ayn Rand-24-
+1936-We The Living-Ayn Rand-13-
+1985-Mission Earth-L. Ron Hubbard-11-
+1940-Fear-L. Ron Hubbard-16-
