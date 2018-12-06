@@ -9,8 +9,9 @@ int main() {
     return 0;
   }
   /*BookClass *tmp = head;
-  while(tmp){
+  do {
     tmp->printBookDetails();
     tmp = tmp->getNextPtr();
-  }*/
+  }
+  while(tmp != head);*/
 }
