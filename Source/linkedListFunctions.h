@@ -1,6 +1,52 @@
 #include "BookClass.h"
 
-BookClass *sort_l(BookClass *head){
+void sort_l_bookname(BookClass *head){
+  for(BookClass *tmp = head; tmp->getNextPtr() != head; tmp = tmp->getNextPtr()){
+    for(BookClass *tmp2 = tmp->getNextPtr(); tmp2->getNextPtr() != head; tmp2 = tmp2->getNextPtr()){
+      if(tmp->getBookName() > tmp2->getBookName()){
+        string o;
+        int l;
+        double d;
+        o = tmp->getBookName();
+        tmp->setBookName(tmp2->getBookName());
+        tmp2->setBookName(o);
+        o = tmp->getWriter();
+        tmp->setWriter(tmp2->getWriter());
+        tmp2->setWriter(o);
+        l = tmp->getPubYear();
+        tmp->setPubYear(tmp2->getPubYear());
+        tmp2->setPubYear(l);
+        d = tmp->getPrice();
+        tmp->setPrice(tmp2->getPrice());
+        tmp2->setPrice(d);
+      }
+    }
+  }
+
+}
+
+void sort_l_date(BookClass *head){
+  for(BookClass *tmp = head; tmp->getNextPtr() != head; tmp = tmp->getNextPtr()){
+    for(BookClass *tmp2 = tmp->getNextPtr(); tmp2->getNextPtr() != head; tmp2 = tmp2->getNextPtr()){
+      if(tmp->getPubYear() > tmp2->getPubYear()){
+        string o;
+        int l;
+        double d;
+        o = tmp->getBookName();
+        tmp->setBookName(tmp2->getBookName());
+        tmp2->setBookName(o);
+        o = tmp->getWriter();
+        tmp->setWriter(tmp2->getWriter());
+        tmp2->setWriter(o);
+        l = tmp->getPubYear();
+        tmp->setPubYear(tmp2->getPubYear());
+        tmp2->setPubYear(l);
+        d = tmp->getPrice();
+        tmp->setPrice(tmp2->getPrice());
+        tmp2->setPrice(d);
+      }
+    }
+  }
 
 }
 
