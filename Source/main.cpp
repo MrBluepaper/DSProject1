@@ -12,7 +12,6 @@ void addNewBook(BookClass *head);
 BookClass *addCustomer(QueueClass *males, QueueClass *females, BookClass *head);
 BookClass *addBookToCustomer(BookClass* head, QueueClass *tmp);
 void printCustomers(QueueClass *males, QueueClass *females);
-void exitCustomers(QueueClass *males, QueueClass *females);
 
 int main() {
   BookClass *head = new BookClass;
@@ -42,7 +41,62 @@ int main() {
         break;
 
       case 4:
-
+        printCustomers(maleHead, femaleHead);
+        cout << "Enter - 1 - to Exit a Customer or - 0 - to return previous menu : ";
+        int u;
+        cin >> u;
+        while (u == 1) {
+          int i = 1;
+          QueueClass *males_tt = maleHead->getNextPtr();
+          QueueClass *females_tt = femaleHead->getNextPtr();
+          while(males_tt && females_tt){
+            if(i % 2){
+              cout << "One customer exited...\n";
+              cout << "Customer Name : " << males_tt->getName()
+                    << "Bill :\n";
+              males_tt->printBill();
+              QueueClass *tmp = males_tt->getNextPtr();
+              delete males_tt;
+              maleHead = tmp;
+              males_tt = males_tt->getNextPtr();
+              i++;
+            }
+            else{
+              cout << "One customer exited...\n";
+              cout << "Customer Name : " << females_tt->getName()
+                    << "Bill :\n";
+              females_tt->printBill();
+              QueueClass *tmp = females_tt->getNextPtr();
+              delete females_tt;
+              femaleHead = tmp;
+              females_tt = females_tt->getNextPtr();
+              i++;
+            }
+          }
+          while(males_tt){
+            cout << "One customer exited...\n";
+            cout << "Customer Name : " << males_tt->getName()
+                  << "Bill :\n";
+            males_tt->printBill();
+            QueueClass *tmp = males_tt->getNextPtr();
+            delete males_tt;
+            maleHead = tmp;
+            males_tt = males_tt->getNextPtr();
+            i++;
+          }
+          while(females_tt){
+            cout << "One customer exited...\n";
+            cout << "Customer Name : " << females_tt->getName()
+                  << "Bill :\n";
+            females_tt->printBill();
+            QueueClass *tmp = females_tt->getNextPtr();
+            delete females_tt;
+            femaleHead = tmp;
+            females_tt = females_tt->getNextPtr();
+            i++;
+          }
+          cin >> u;
+        }
         break;
 
       case 5:
@@ -171,20 +225,28 @@ void printCustomers(QueueClass *males, QueueClass *females){
   cout << "\n\n----)) Customers ((----\n";
   int i = 1;
   males = males->getNextPtr();
+  females = females->getNextPtr();
+  while(males && females){
+    if(i % 2){
+      cout << i << ". " << males->getName() << "   " << males->getShop()->getPrice() << " $" << endl;
+      males = males->getNextPtr();
+      i++;
+    }
+    else{
+      cout << i << ". " << females->getName() << "   " << females->getShop()->getPrice() << " $" << endl;
+      females = females->getNextPtr();
+      i++;
+    }
+  }
   while(males){
     cout << i << ". " << males->getName() << "   " << males->getShop()->getPrice() << " $" << endl;
     males = males->getNextPtr();
     i++;
   }
-  females = females->getNextPtr();
   while(females){
     cout << i << ". " << females->getName() << "   " << females->getShop()->getPrice() << " $" << endl;
     females = females->getNextPtr();
     i++;
   }
   cout << endl << endl;
-}
-
-void exitCustomers(QueueClass *males, QueueClass *females){
-
 }
