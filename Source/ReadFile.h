@@ -5,12 +5,13 @@
 #include "BookClass.h"
 using namespace std;
 
-class readFile(){
+class readFile{
+private:
   BookClass *head;
 public:
   readFile(BookClass *head);
   bool readFileFunction();
-}
+};
 readFile::readFile(BookClass *head){
   this->head = head;
 }
@@ -24,13 +25,13 @@ bool readFile::readFileFunction(){
   while (getline(bookFile,line)) {
     stringstream s(line);
     s >> word;
-    head->setPubYear(atoi(s.c_str());
+    head->setPubYear(atoi(word.c_str()));
     s >> word;
-    head->setBookName(s);
+    head->setBookName(word);
     s >> word;
-    head->setWriter(s);
+    head->setWriter(word);
     s >> word;
-    head->setPrice(atoi(s.c_str());
+    head->setPrice(atoi(word.c_str()));
     BookClass *tmp = new BookClass;
     head->setNextPtr(tmp);
     head = tmp;
