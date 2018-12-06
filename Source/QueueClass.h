@@ -1,12 +1,16 @@
+#include "ShopClass.h"
 class QueueClass{
 private:
   bool sex; //true --> male         false --> female
-  int bookCount;
-
+  ShopClass shopping;
+  QueueClass *nextPtr;
 public:
-  QueueClass(){bookCount = 0;};
-  void setSex(bool a){sex = a;};
-  void addBookCount(){bookCount++;}
+  QueueClass(){nextPtr = nullptr;}
+  void setSex(bool a){sex = a;}
   bool getSex(){return sex;}
-  int getBookCount(){return bookCount;}
+  ShopClass *getShop(){return &shopping;}
+  QueueClass *getNextPtr(){return nextPtr;}
+  void setNextPtr(QueueClass *n){nextPtr = n;}
+  void printBill(){
+  }
 };
