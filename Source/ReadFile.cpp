@@ -9,6 +9,7 @@ bool readFile::readFileFunction(){
     return false;
   }
   string line, word;
+  BookClass *pre;
   while (getline(bookFile,line)) {
     stringstream s(line);
     s >> word;
@@ -19,9 +20,12 @@ bool readFile::readFileFunction(){
     head->setWriter(word);
     s >> word;
     head->setPrice(atoi(word.c_str()));
+    pre = head;
     BookClass *tmp = new BookClass;
     head->setNextPtr(tmp);
     head = tmp;
   }
+  delete head;
+  pre->setNextPtr(nullptr);
   return true;
 }
