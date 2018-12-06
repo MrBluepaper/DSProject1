@@ -7,6 +7,7 @@ using namespace std;
 
 int printCommands();
 void printBookList(BookClass *head);
+void addNewBook(BookClass *head);
 
 int main() {
   BookClass *head = new BookClass;
@@ -25,7 +26,8 @@ int main() {
         break;
 
       case 2:
-
+        addNewBook(head);
+        sort_l_bookname(head);
         break;
 
       case 3:
@@ -85,4 +87,25 @@ void printBookList(BookClass *head){
   }
   while(tmp != head);
   cout << "-------------------------------------------------------------------------\n\n\n";
+}
+
+void addNewBook(BookClass *head){
+  BookClass *newBook = new BookClass;
+  string s;
+  cout << "\nEnter Book's Name : ";
+  cin >> s;
+  newBook->setBookName(s);
+  cout << "Enter Book's Author Name : ";
+  cin >> s;
+  newBook->setWriter(s);
+  int a;
+  cout << "Enter Book's Publication Year : ";
+  cin >> a;
+  newBook->setPubYear(a);
+  double d;
+  cout << "Enter Book's Price ($): ";
+  cin >> d;
+  newBook->setPrice(d);
+  add_l(head, newBook);
+  cout << "\nYour Book Added Successfully.\n\n";
 }
