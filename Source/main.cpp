@@ -156,10 +156,11 @@ BookClass *addNewBook(BookClass *head){
   BookClass *newBook = new BookClass;
   string s;
   cout << "\nEnter Book's Name : ";
-  cin >> s;
+  cin.ignore();
+  getline(cin, s);
   newBook->setBookName(s);
   cout << "Enter Book's Author Name : ";
-  cin >> s;
+  getline(cin, s);
   newBook->setWriter(s);
   int a;
   cout << "Enter Book's Publication Year : ";
