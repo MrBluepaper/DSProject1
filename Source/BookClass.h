@@ -3,8 +3,8 @@
 using namespace std;
 class BookClass{
 private:
-  string bookName;
   string writer;
+  string bookName;
   int pubYear;
   double price;
   BookClass *nextPtr;

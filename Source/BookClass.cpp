@@ -11,5 +11,9 @@ void BookClass::setPubYear(int i){pubYear = i;}
 void BookClass::setPrice(double d){price = d;}
 void BookClass::setNextPtr(BookClass *b){nextPtr = b;}
 void BookClass::printBookDetails(){
-  cout << bookName << " |,| " << writer << " |,| " << pubYear << " |,| " << price << "$" << endl;
+  cout << " " << bookName;
+  for(unsigned int i = 0; i < 29 - bookName.size(); i++, cout << " ");
+  cout << "| " << writer;
+  for(unsigned int i = 0; i < 19 - writer.size(); i++, cout << " ");
+  cout << "| " << pubYear << " | " << price << " $  |\n";
 }
