@@ -4,10 +4,13 @@ using namespace std;
 int main() {
   BookClass *head = new BookClass;
   readFile r(head);
-  r.readFileFunction();
-  BookClass *tmp = head;
-  while(tmp){
-    head->printBookDetails();
-    tmp = tmp->getNextPtr();
+  if(!(r.readFileFunction())){
+    cout << "Unable to read from file :/\n";
+    return 0;
   }
+  /*BookClass *tmp = head;
+  while(tmp){
+    tmp->printBookDetails();
+    tmp = tmp->getNextPtr();
+  }*/
 }
