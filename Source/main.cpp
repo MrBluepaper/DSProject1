@@ -1,6 +1,5 @@
 #include <iostream>
 #include <string>
-#include <cmath>
 #include "ReadFile.h"
 #include "linkedListFunctions.h"
 #include "QueueClass.h"
@@ -115,7 +114,7 @@ int printCommands(){
         << "\t|2. Add new Book       |\n"
         << "\t|3. Add new Customer   |\n"
         << "\t|4. Exit Customer      |\n"
-        << "\t|5. Customer Bills|\n"
+        << "\t|5. Customer Bills     |\n"
         << "\t|6. Exit               |\n"
         << "\t+======================+\n\n"
         << "Enter your command number (1-6): ";
