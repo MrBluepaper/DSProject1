@@ -49,11 +49,10 @@ int main() {
           int i = 1;
           QueueClass *males_tt = maleHead->getNextPtr();
           QueueClass *females_tt = femaleHead->getNextPtr();
-          while(males_tt && females_tt){
+          if(males_tt && females_tt){
             if(i % 2){
-              cout << "One customer exited...\n";
               cout << "Customer Name : " << males_tt->getName()
-                    << "Bill :\n";
+                    << "\nBill :\n";
               males_tt->printBill();
               QueueClass *tmp = males_tt->getNextPtr();
               delete males_tt;
@@ -62,9 +61,8 @@ int main() {
               i++;
             }
             else{
-              cout << "One customer exited...\n";
               cout << "Customer Name : " << females_tt->getName()
-                    << "Bill :\n";
+                    << "\nBill :\n";
               females_tt->printBill();
               QueueClass *tmp = females_tt->getNextPtr();
               delete females_tt;
@@ -73,10 +71,9 @@ int main() {
               i++;
             }
           }
-          while(males_tt){
-            cout << "One customer exited...\n";
+          else if(males_tt){
             cout << "Customer Name : " << males_tt->getName()
-                  << "Bill :\n";
+                  << "\nBill :\n";
             males_tt->printBill();
             QueueClass *tmp = males_tt->getNextPtr();
             delete males_tt;
@@ -84,10 +81,9 @@ int main() {
             males_tt = males_tt->getNextPtr();
             i++;
           }
-          while(females_tt){
-            cout << "One customer exited...\n";
+          else if(females_tt){
             cout << "Customer Name : " << females_tt->getName()
-                  << "Bill :\n";
+                  << "\nBill :\n";
             females_tt->printBill();
             QueueClass *tmp = females_tt->getNextPtr();
             delete females_tt;
@@ -95,6 +91,8 @@ int main() {
             females_tt = females_tt->getNextPtr();
             i++;
           }
+          printCustomers(maleHead, femaleHead);
+          cout << "Enter - 1 - to Exit a Customer or - 0 - to return previous menu : ";
           cin >> u;
         }
         break;
@@ -134,6 +132,7 @@ void printBookList(BookClass *head){
     cout << "No Book Available!\n\n";
     return;
   }
+  sort_l_bookname(head);
   cout << "\n\n\n------------------------------> Book List <------------------------------\n";
   cout << " NO. |          Book  Name          |       Author       | Year | Price |\n";
   cout << "-------------------------------------------------------------------------\n";
