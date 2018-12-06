@@ -46,9 +46,15 @@ void sort_l_date(BookClass *head){
       }
 }
 
-void add_l(BookClass *head, BookClass *new_a){
+BookClass *add_l(BookClass *head, BookClass *new_a){
+  if(head == nullptr){
+    head = new_a;
+    head->setNextPtr(head);
+    return head;
+  }
   new_a->setNextPtr(head->getNextPtr());
   head->setNextPtr(new_a);
+  return head;
 }
 
 BookClass *delete_l(BookClass *head, string bookName){

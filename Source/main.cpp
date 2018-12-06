@@ -8,7 +8,7 @@ using namespace std;
 
 int printCommands();
 void printBookList(BookClass *head);
-void addNewBook(BookClass *head);
+BookClass *addNewBook(BookClass *head);
 BookClass *addCustomer(QueueClass *males, QueueClass *females, BookClass *head);
 BookClass *addBookToCustomer(BookClass* head, QueueClass *tmp);
 void printCustomers(QueueClass *males, QueueClass *females);
@@ -32,7 +32,7 @@ int main() {
         break;
 
       case 2:
-        addNewBook(head);
+        head = addNewBook(head);
         sort_l_bookname(head);
         break;
 
@@ -152,7 +152,7 @@ void printBookList(BookClass *head){
   cout << "-------------------------------------------------------------------------\n\n\n";
 }
 
-void addNewBook(BookClass *head){
+BookClass *addNewBook(BookClass *head){
   BookClass *newBook = new BookClass;
   string s;
   cout << "\nEnter Book's Name : ";
@@ -169,8 +169,9 @@ void addNewBook(BookClass *head){
   cout << "Enter Book's Price ($): ";
   cin >> d;
   newBook->setPrice(d);
-  add_l(head, newBook);
+  head = add_l(head, newBook);
   cout << "\nYour Book Added Successfully.\n\n";
+  return head;
 }
 BookClass *addCustomer(QueueClass *males, QueueClass *females, BookClass *head){
   QueueClass *tmp = new QueueClass;
