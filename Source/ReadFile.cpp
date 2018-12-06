@@ -9,7 +9,7 @@ bool readFile::readFileFunction(){
     return false;
   }
   string line, word;
-  BookClass *pre;
+  BookClass *pre, *head_tmp = head;
   while (getline(bookFile,line)) {
     stringstream s(line);
     s >> word;
@@ -26,6 +26,6 @@ bool readFile::readFileFunction(){
     head = tmp;
   }
   delete head;
-  pre->setNextPtr(nullptr);
+  pre->setNextPtr(head_tmp);
   return true;
 }
