@@ -1,6 +1,6 @@
 void sort_l_bookname(BookClass *head){
-  for(BookClass *tmp = head; tmp->getNextPtr() != head; tmp = tmp->getNextPtr()){
-    for(BookClass *tmp2 = tmp->getNextPtr(); tmp2 != head; tmp2 = tmp2->getNextPtr()){
+  for(BookClass *tmp = head; tmp->getNextPtr() != head; tmp = tmp->getNextPtr())
+    for(BookClass *tmp2 = tmp->getNextPtr(); tmp2 != head; tmp2 = tmp2->getNextPtr())
       if(tmp->getBookName() > tmp2->getBookName()){
         string o;
         int l;
@@ -18,14 +18,11 @@ void sort_l_bookname(BookClass *head){
         tmp->setPrice(tmp2->getPrice());
         tmp2->setPrice(d);
       }
-    }
-  }
-
 }
 
 void sort_l_date(BookClass *head){
-  for(BookClass *tmp = head; tmp->getNextPtr() != head; tmp = tmp->getNextPtr()){
-    for(BookClass *tmp2 = tmp->getNextPtr(); tmp2 != head; tmp2 = tmp2->getNextPtr()){
+  for(BookClass *tmp = head; tmp->getNextPtr() != head; tmp = tmp->getNextPtr())
+    for(BookClass *tmp2 = tmp->getNextPtr(); tmp2 != head; tmp2 = tmp2->getNextPtr())
       if(tmp->getPubYear() > tmp2->getPubYear()){
         string o;
         int l;
@@ -43,9 +40,6 @@ void sort_l_date(BookClass *head){
         tmp->setPrice(tmp2->getPrice());
         tmp2->setPrice(d);
       }
-    }
-  }
-
 }
 
 void add_l(BookClass *head, BookClass *new_a){
@@ -111,7 +105,7 @@ BookClass *search_ln(BookClass *head, int n){
         return nullptr;
       }
     }
-    cout << "\n\n" << tmp->getBookName() << endl;
+    //cout << "\n\n" << tmp->getBookName() << endl;
     return tmp;
   }
   else

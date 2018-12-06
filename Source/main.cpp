@@ -10,6 +10,7 @@ int printCommands();
 void printBookList(BookClass *head);
 void addNewBook(BookClass *head);
 BookClass *addCustomer(QueueClass *males, QueueClass *females, BookClass *head);
+BookClass *addBookToCustomer(BookClass* head, QueueClass *tmp);
 
 int main() {
   BookClass *head = new BookClass;
@@ -128,11 +129,15 @@ BookClass *addCustomer(QueueClass *males, QueueClass *females, BookClass *head){
   }
   tmpt->setNextPtr(tmp);
   tmp->setSex(a-1);
+  head = addBookToCustomer(head, tmp);
+  return head;
+}
+BookClass *addBookToCustomer(BookClass* head, QueueClass *tmp){
   printBookList(head);
   cout << "\nChoose your books number to add (end with -1) : \n";
   int y;
-  BookClass *buy;
   cin >> y;
+  BookClass *buy;
   do{
     buy = search_ln(head, y-1);
     if(buy == nullptr)
