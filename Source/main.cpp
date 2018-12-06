@@ -11,6 +11,8 @@ void printBookList(BookClass *head);
 void addNewBook(BookClass *head);
 BookClass *addCustomer(QueueClass *males, QueueClass *females, BookClass *head);
 BookClass *addBookToCustomer(BookClass* head, QueueClass *tmp);
+void printCustomers(QueueClass *males, QueueClass *females);
+void exitCustomers(QueueClass *males, QueueClass *females);
 
 int main() {
   BookClass *head = new BookClass;
@@ -44,7 +46,7 @@ int main() {
         break;
 
       case 5:
-
+        printCustomers(maleHead, femaleHead);
         break;
 
       case 6:
@@ -62,7 +64,7 @@ int printCommands(){
         << "\t|2. Add new Book       |\n"
         << "\t|3. Add new Customer   |\n"
         << "\t|4. Exit Customer      |\n"
-        << "\t|5. Customer Management|\n"
+        << "\t|5. Customer Bills|\n"
         << "\t|6. Exit               |\n"
         << "\t+======================+\n\n"
         << "Enter your command number (1-6): ";
@@ -74,6 +76,10 @@ int printCommands(){
   return a;
 }
 void printBookList(BookClass *head){
+  if(head == nullptr){
+    cout << "No Book Available!\n\n";
+    return;
+  }
   cout << "\n\n\n------------------------------> Book List <------------------------------\n";
   cout << " NO. |          Book  Name          |       Author       | Year | Price |\n";
   cout << "-------------------------------------------------------------------------\n";
@@ -129,10 +135,18 @@ BookClass *addCustomer(QueueClass *males, QueueClass *females, BookClass *head){
   }
   tmpt->setNextPtr(tmp);
   tmp->setSex(a-1);
+  cout << "Enter your Customer name : ";
+  string ss;
+  cin >> ss;
+  tmp->setName(ss);
   head = addBookToCustomer(head, tmp);
   return head;
 }
 BookClass *addBookToCustomer(BookClass* head, QueueClass *tmp){
+  if(head == nullptr){
+    cout << "\nNo Book Available!\n";
+    return nullptr;
+  }
   printBookList(head);
   cout << "\nChoose your books number to add (end with -1) : \n";
   int y;
@@ -147,7 +161,30 @@ BookClass *addBookToCustomer(BookClass* head, QueueClass *tmp){
       tmp->getShop()->setPrice(buy->getPrice());
       head = delete_l(head, buy->getBookName());
     }
+    printBookList(head);
     cin >> y;
   } while(y != -1);
   return head;
+}
+
+void printCustomers(QueueClass *males, QueueClass *females){
+  cout << "\n\n----)) Customers ((----\n";
+  int i = 1;
+  males = males->getNextPtr();
+  while(males){
+    cout << i << ". " << males->getName() << "   " << males->getShop()->getPrice() << " $" << endl;
+    males = males->getNextPtr();
+    i++;
+  }
+  females = females->getNextPtr();
+  while(females){
+    cout << i << ". " << females->getName() << "   " << females->getShop()->getPrice() << " $" << endl;
+    females = females->getNextPtr();
+    i++;
+  }
+  cout << endl << endl;
+}
+
+void exitCustomers(QueueClass *males, QueueClass *females){
+
 }
