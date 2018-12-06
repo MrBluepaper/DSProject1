@@ -1,5 +1,6 @@
 #include <iostream>
 #include "ReadFile.h"
+#include "linkedListFunctions.h"
 using namespace std;
 int main() {
   BookClass *head = new BookClass;
