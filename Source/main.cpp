@@ -40,13 +40,12 @@ int main() {
         head = addCustomer(maleHead, femaleHead, head);
         break;
 
-      case 4:
+      case 4:{
         printCustomers(maleHead, femaleHead);
         cout << "Enter - 1 - to Exit a Customer or - 0 - to return previous menu : ";
-        int u;
+        int u,i = 1;
         cin >> u;
         while (u == 1) {
-          int i = 1;
           QueueClass *males_tt = maleHead->getNextPtr();
           QueueClass *females_tt = femaleHead->getNextPtr();
           if(males_tt && females_tt){
@@ -56,7 +55,7 @@ int main() {
               males_tt->printBill();
               QueueClass *tmp = males_tt->getNextPtr();
               delete males_tt;
-              maleHead = tmp;
+              maleHead->setNextPtr(tmp);
               males_tt = males_tt->getNextPtr();
               i++;
             }
@@ -66,7 +65,7 @@ int main() {
               females_tt->printBill();
               QueueClass *tmp = females_tt->getNextPtr();
               delete females_tt;
-              femaleHead = tmp;
+              femaleHead->setNextPtr(tmp);
               females_tt = females_tt->getNextPtr();
               i++;
             }
@@ -77,7 +76,7 @@ int main() {
             males_tt->printBill();
             QueueClass *tmp = males_tt->getNextPtr();
             delete males_tt;
-            maleHead = tmp;
+            maleHead->setNextPtr(tmp);
             males_tt = males_tt->getNextPtr();
             i++;
           }
@@ -87,7 +86,7 @@ int main() {
             females_tt->printBill();
             QueueClass *tmp = females_tt->getNextPtr();
             delete females_tt;
-            femaleHead = tmp;
+            femaleHead->setNextPtr(tmp);
             females_tt = females_tt->getNextPtr();
             i++;
           }
@@ -96,7 +95,7 @@ int main() {
           cin >> u;
         }
         break;
-
+      }
       case 5:
         printCustomers(maleHead, femaleHead);
         break;
