@@ -3,7 +3,7 @@ readFile::readFile(BookClass *head){
   this->head = head;
 }
 bool readFile::readFileFunction(){
-  ifstream bookFile("bookName.txt");
+  ifstream bookFile("bookList.txt");
   if(!bookFile.is_open()){
     cerr << "Unable to open file :" << '\n';
     return false;

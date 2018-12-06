@@ -4,7 +4,6 @@
 #include <sstream>
 #include "BookClass.h"
 using namespace std;
-
 class readFile{
 private:
   BookClass *head;
