@@ -203,6 +203,7 @@ BookClass *addBookToCustomer(BookClass* head, QueueClass *tmp){
   cout << "\nChoose your books number to add (end with -1) : \n";
   int y;
   cin >> y;
+  if(y == -1) return head;
   BookClass *buy;
   do{
     buy = search_ln(head, y-1);
