@@ -66,6 +66,15 @@ BookClass *delete_l(BookClass *head, string bookName){
     }
   }
   else{
+    if(tmp->getBookName() == bookName){
+      BookClass *y = tmp->getNextPtr();
+      BookClass *x = tmp;
+      while(x->getNextPtr() != tmp)
+        x = x->getNextPtr();
+      x->setNextPtr(y);
+      delete tmp;
+      return y;
+    }
     do {
       if(tmp->getNextPtr()->getBookName() == bookName){
         BookClass *y = tmp->getNextPtr()->getNextPtr();
@@ -74,7 +83,7 @@ BookClass *delete_l(BookClass *head, string bookName){
         return head;
       }
       tmp = tmp->getNextPtr();
-    } while(head != tmp);
+    } while(head != tmp->getNextPtr());
     cout << "Book not found to delete!\n";
     return head;
   }
@@ -91,4 +100,20 @@ BookClass *search_l(BookClass *head, string bookName){
     cout << "Book not found!\n";
   }
   return nullptr;
+}
+BookClass *search_ln(BookClass *head, int n){
+  if(head != nullptr){
+    BookClass *tmp = head;
+    for(int i = 0; i < n; i++){
+      tmp = tmp->getNextPtr();
+      if((i < n-1) && head == tmp){
+        cout << "Book not found!\n";
+        return nullptr;
+      }
+    }
+    cout << "\n\n" << tmp->getBookName() << endl;
+    return tmp;
+  }
+  else
+    return nullptr;
 }
