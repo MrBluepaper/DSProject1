@@ -3,14 +3,18 @@
 #include <cmath>
 #include "ReadFile.h"
 #include "linkedListFunctions.h"
+#include "QueueClass.h"
 using namespace std;
 
 int printCommands();
 void printBookList(BookClass *head);
 void addNewBook(BookClass *head);
+BookClass *addCustomer(QueueClass *males, QueueClass *females, BookClass *head);
 
 int main() {
   BookClass *head = new BookClass;
+  QueueClass *maleHead = new QueueClass;
+  QueueClass *femaleHead = new QueueClass;
   readFile r(head);
   if(!(r.readFileFunction())){
     cout << "Unable to read from file :/\n";
@@ -31,7 +35,7 @@ int main() {
         break;
 
       case 3:
-
+        head = addCustomer(maleHead, femaleHead, head);
         break;
 
       case 4:
@@ -108,4 +112,37 @@ void addNewBook(BookClass *head){
   newBook->setPrice(d);
   add_l(head, newBook);
   cout << "\nYour Book Added Successfully.\n\n";
+}
+BookClass *addCustomer(QueueClass *males, QueueClass *females, BookClass *head){
+  QueueClass *tmp = new QueueClass;
+  QueueClass *tmpt;
+  cout << "\nEnter your customer sex (1.male / 2.female) : ";
+  int a;
+  cin >> a;
+  if(a == 1)
+    tmpt = males;
+  else if(a == 2)
+    tmpt = females;
+  while(tmpt->getNextPtr()){
+    tmpt = tmpt->getNextPtr();
+  }
+  tmpt->setNextPtr(tmp);
+  tmp->setSex(a-1);
+  printBookList(head);
+  cout << "\nChoose your books number to add (end with -1) : \n";
+  int y;
+  BookClass *buy;
+  cin >> y;
+  do{
+    buy = search_ln(head, y-1);
+    if(buy == nullptr)
+      cout << "\nBook not found!\n";
+    else{
+      tmp->getShop()->addBook(buy->getBookName());
+      tmp->getShop()->setPrice(buy->getPrice());
+      head = delete_l(head, buy->getBookName());
+    }
+    cin >> y;
+  } while(y != -1);
+  return head;
 }
