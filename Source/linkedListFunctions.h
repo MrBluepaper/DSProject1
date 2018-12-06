@@ -1,4 +1,6 @@
 void sort_l_bookname(BookClass *head){
+  if(head == nullptr)
+    return;
   for(BookClass *tmp = head; tmp->getNextPtr() != head; tmp = tmp->getNextPtr())
     for(BookClass *tmp2 = tmp->getNextPtr(); tmp2 != head; tmp2 = tmp2->getNextPtr())
       if(tmp->getBookName() > tmp2->getBookName()){
@@ -21,6 +23,8 @@ void sort_l_bookname(BookClass *head){
 }
 
 void sort_l_date(BookClass *head){
+  if(head == nullptr)
+    return;
   for(BookClass *tmp = head; tmp->getNextPtr() != head; tmp = tmp->getNextPtr())
     for(BookClass *tmp2 = tmp->getNextPtr(); tmp2 != head; tmp2 = tmp2->getNextPtr())
       if(tmp->getPubYear() > tmp2->getPubYear()){
