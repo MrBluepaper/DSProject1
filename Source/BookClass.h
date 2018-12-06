@@ -1,31 +1,37 @@
 #include <iostream>
 using namespace std;
-class Book{
+class BookClass{
   string bookName;
   string writer;
   int pubYear;
   double price;
-  Book *nextPtr;
+  BookClass *nextPtr;
 
 public:
+  BookClass();
   string getBookName();
   string getWriter();
   int getPubYear();
   double getPrice();
-  Book *getNextPtr();
+  BookClass *getNextPtr();
   void setBookName(string s);
   void setWriter(string s);
   void setPubYear(int i);
   void setPrice(double d);
-  void setNextPtr(Book *b);
+  void setNextPtr(BookClass *b);
+  void printBookDetails();
 };
-string Book::getBookName(){return bookName;}
-string Book::getWriter(){return writer;}
-int Book::getPubYear(){return pubYear;}
-double Book::getPrice(){return price;}
-Book *Book::getNextPtr(){return nextPtr;}
-void Book::setBookName(string s){bookName = s;}
-void Book::setWriter(string s){writer = s;}
-void Book::setPubYear(int i){pubYear = i;}
-void Book::setPrice(double d){price = d;}
-void setNextPtr(Book *b){nextPtr = b;}
+BookClass::BookClass(){nextPtr = nullptr;}
+string BookClass::getBookName(){return bookName;}
+string BookClass::getWriter(){return writer;}
+int BookClass::getPubYear(){return pubYear;}
+double BookClass::getPrice(){return price;}
+BookClass *BookClass::getNextPtr(){return nextPtr;}
+void BookClass::setBookName(string s){bookName = s;}
+void BookClass::setWriter(string s){writer = s;}
+void BookClass::setPubYear(int i){pubYear = i;}
+void BookClass::setPrice(double d){price = d;}
+void BookClass::setNextPtr(BookClass *b){nextPtr = b;}
+void BookClass::printBookDetails(){
+  cout << bookName << " , " << writer << " , " << getPubYear << " , " << price << "$" << endl;
+}
