@@ -10,7 +10,7 @@ void printBookList(BookClass *head);
 BookClass *addNewBook(BookClass *head);
 BookClass *addCustomer(QueueClass *males, QueueClass *females, BookClass *head);
 BookClass *addBookToCustomer(BookClass* head, QueueClass *tmp);
-void printCustomers(QueueClass *males, QueueClass *females);
+void printCustomers(QueueClass *males, QueueClass *females, int i);
 
 int main() {
   BookClass *head = new BookClass;
@@ -40,7 +40,11 @@ int main() {
         break;
 
       case 4:{
-        printCustomers(maleHead, femaleHead);
+        if(maleHead->getNextPtr() == nullptr && femaleHead->getNextPtr() == nullptr){
+          cout << "No Customer to Exit...\n\n";
+          break;
+        }
+        printCustomers(maleHead, femaleHead, 1);
         cout << "Enter - 1 - to Exit a Customer or - 0 - to return previous menu : ";
         int u,i = 1;
         cin >> u;
@@ -89,14 +93,18 @@ int main() {
             females_tt = females_tt->getNextPtr();
             i++;
           }
-          printCustomers(maleHead, femaleHead);
+          printCustomers(maleHead, femaleHead, i);
+          if(maleHead->getNextPtr() == nullptr && femaleHead->getNextPtr() == nullptr){
+            cout << "No Customer to Exit...\n\n";
+            break;
+          }
           cout << "Enter - 1 - to Exit a Customer or - 0 - to return previous menu : ";
           cin >> u;
         }
         break;
       }
       case 5:
-        printCustomers(maleHead, femaleHead);
+        printCustomers(maleHead, femaleHead, 1);
         break;
 
       case 6:
@@ -221,31 +229,35 @@ BookClass *addBookToCustomer(BookClass* head, QueueClass *tmp){
   return head;
 }
 
-void printCustomers(QueueClass *males, QueueClass *females){
+void printCustomers(QueueClass *males, QueueClass *females, int i){
   cout << "\n\n----)) Customers ((----\n";
-  int i = 1;
   males = males->getNextPtr();
   females = females->getNextPtr();
+  int j = 1;
   while(males && females){
     if(i % 2){
-      cout << i << ". " << males->getName() << "   " << males->getShop()->getPrice() << " $" << endl;
+      cout << j << ". " << males->getName() << "   " << males->getShop()->getPrice() << " $" << endl;
       males = males->getNextPtr();
+      j++;
       i++;
     }
     else{
-      cout << i << ". " << females->getName() << "   " << females->getShop()->getPrice() << " $" << endl;
+      cout << j << ". " << females->getName() << "   " << females->getShop()->getPrice() << " $" << endl;
       females = females->getNextPtr();
+      j++;
       i++;
     }
   }
   while(males){
-    cout << i << ". " << males->getName() << "   " << males->getShop()->getPrice() << " $" << endl;
+    cout << j << ". " << males->getName() << "   " << males->getShop()->getPrice() << " $" << endl;
     males = males->getNextPtr();
+    j++;
     i++;
   }
   while(females){
-    cout << i << ". " << females->getName() << "   " << females->getShop()->getPrice() << " $" << endl;
+    cout << j << ". " << females->getName() << "   " << females->getShop()->getPrice() << " $" << endl;
     females = females->getNextPtr();
+    j++;
     i++;
   }
   cout << endl << endl;
