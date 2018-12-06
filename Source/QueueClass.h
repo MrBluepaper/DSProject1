@@ -15,5 +15,14 @@ public:
   QueueClass *getNextPtr(){return nextPtr;}
   void setNextPtr(QueueClass *n){nextPtr = n;}
   void printBill(){
+    string t;
+    t = shopping.deleteBook();
+    while (t != "0"){
+      cout << "- " << t << endl;
+      t = shopping.deleteBook();
+    }
+    cout << "------------\n";
+    cout << "Price : " << shopping.getPrice() << " $" << endl;
+    cout << "\nOne Customer Exited...\n\n";
   }
 };
