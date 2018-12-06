@@ -4,6 +4,11 @@ BookClass *sort_l(BookClass *head){
 
 }
 
+void add_l(BookClass *head, BookClass *new_a){
+  new_a->setNextPtr(head->getNextPtr());
+  head->setNextPtr(new_a);
+}
+
 BookClass *delete_l(BookClass *head, string bookName){
 
 }
