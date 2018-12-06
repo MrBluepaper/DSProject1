@@ -25,20 +25,18 @@ public:
   }
   string deleteBook(){
     if(books == nullptr){
-      cout << "No Book.\n";
-      return 0;
+      return "0";
     }
-    else{
-      size--;
-      string *tmp = new string[size];
-      for(int i = 0; i < size; i++){
-        tmp[i] = books[i];
-        string u = books[size];
-        delete[] books;
-        books = tmp;
-        return u;
-      }
-    }
+    size--;
+    string *tmp = new string[size];
+    for(int i = 0; i < size; i++)
+      tmp[i] = books[i];
+    string u = books[size];
+    delete[] books;
+    books = tmp;
+    if(!size)
+      books = nullptr;
+    return u;
   }
   string *getBooks(){return books;}
   void setPrice(double d){
