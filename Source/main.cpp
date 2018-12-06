@@ -6,7 +6,7 @@
 using namespace std;
 
 int printCommands();
-void printBookList(BookClass *head);
+void printBookList(BookClass *head, int i);
 BookClass *addNewBook(BookClass *head);
 BookClass *addCustomer(QueueClass *males, QueueClass *females, BookClass *head);
 BookClass *addBookToCustomer(BookClass* head, QueueClass *tmp);
@@ -26,8 +26,10 @@ int main() {
   while (1) {
     switch (n) {
       case 1:
-        sort_l_bookname(head);
-        printBookList(head);
+        cout << "Print Book List Sorted by 1.Name or 2.Date ? (1 or 2) : ";
+        int n;
+        cin >> n;
+        printBookList(head, n%2);
         break;
 
       case 2:
@@ -104,6 +106,10 @@ int main() {
         break;
       }
       case 5:
+        if(maleHead->getNextPtr() == nullptr && femaleHead->getNextPtr() == nullptr){
+          cout << "No Customers to show!\n\n";
+          break;
+        }
         printCustomers(maleHead, femaleHead, 1);
         break;
 
@@ -133,12 +139,15 @@ int printCommands(){
   }
   return a;
 }
-void printBookList(BookClass *head){
+void printBookList(BookClass *head, int i){
   if(head == nullptr){
     cout << "No Book Available!\n\n";
     return;
   }
-  sort_l_bookname(head);
+  if(i == 1)
+    sort_l_bookname(head);
+  else if(i == 0)
+    sort_l_date(head);
   cout << "\n\n\n------------------------------> Book List <------------------------------\n";
   cout << " NO. |          Book  Name          |       Author       | Year | Price |\n";
   cout << "-------------------------------------------------------------------------\n";
@@ -208,7 +217,7 @@ BookClass *addBookToCustomer(BookClass* head, QueueClass *tmp){
     cout << "\nNo Book Available!\n";
     return nullptr;
   }
-  printBookList(head);
+  printBookList(head, 1);
   cout << "\nChoose your books number to add (end with -1) : \n";
   int y;
   cin >> y;
@@ -223,7 +232,7 @@ BookClass *addBookToCustomer(BookClass* head, QueueClass *tmp){
       tmp->getShop()->setPrice(buy->getPrice());
       head = delete_l(head, buy->getBookName());
     }
-    printBookList(head);
+    printBookList(head, 1);
     cin >> y;
   } while(y != -1);
   return head;
